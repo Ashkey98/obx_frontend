@@ -8,7 +8,7 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const TenderTypes = () => {
   const [isActive, setIsActive] = useState({});
     
-  function onClick (e){
+  function onClick (e :any) {
       // 👇️ toggledat
       const data={
         id:e.target.id,
