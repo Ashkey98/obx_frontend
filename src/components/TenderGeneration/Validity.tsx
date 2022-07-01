@@ -51,6 +51,8 @@ const Validity = () => {
         paddingTop: "100px",
          width: "100%",
          display: "flex",
+         flexDirection: "row",
+         flexWrap:"wrap",
          alignItems: "center",
          justifyContent: "space-evenly",
        }}>

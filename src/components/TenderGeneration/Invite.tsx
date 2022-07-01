@@ -60,6 +60,7 @@ const Invite = () => {
           minWidth:"280px",
           display: "flex",
           flexDirection: "row",
+          flexWrap: "wrap",
           justifyContent: "space-around"
         }}>
           <Box

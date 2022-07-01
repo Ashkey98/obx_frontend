@@ -32,7 +32,8 @@ const ChooseTemplate = () => {
             fontSize: "25px",
             fontWeight: "bold"
           }}>
-            Choose Template or  <Button
+            Choose Template or
+              <Button
             sx={{
               backgroundColor:"blue",
               width: "110px",
@@ -61,6 +62,7 @@ const ChooseTemplate = () => {
        sx={{
          display:"flex",
          flexDirection: "row",
+         flexWrap: "wrap",
          height:"100%",
          width:"100%",
         justifyContent: "space-evenly",

@@ -132,6 +132,7 @@ export const sellerMenuItems = [
   "My Tenders",
   "Add Documents",
   "Active Bids",
+  "ObxSellerHead",
   "Request for Information",
   "Save for Later",
   "My Profile",

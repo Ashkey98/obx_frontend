@@ -10,6 +10,7 @@ import ActiveBids from "./ActiveBids";
 import RequestForInformation from "./RequestForInformation";
 import SaveForLater from "./SaveForLater";
 import Chat from "../../ults/Chat";
+import ObxSellerHead from "./ObxSellerHead";
 
 interface SellerViewsProps {
   view: String;
@@ -32,7 +33,9 @@ const SellerViews = ({ view }: SellerViewsProps) => {
         ) : view === "Add Documents" ? (
           <AddDocuments />
         ) : view === "Active Bids" ? (
-          <ActiveBids />
+          <ObxSellerHead />
+        ) : view === "ObxSellerHead" ? (
+          <ObxSellerHead />
         ) : view === "Request for Information" ? (
           <RequestForInformation />
         ) : view === "Save for Later" ? (
