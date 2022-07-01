@@ -4,14 +4,14 @@ import { ArrowBack } from "@mui/icons-material";
 
 const PerformanceManagement = () => {
 
-  const [isActive, setIsActive] = useState(false);
-  const onClick = () => {
-    // 👇️ toggle
-    setIsActive(current => !current);
+  const [isActive, setIsActive] = useState(0);
+  // const onClick = () => {
+  //   // 👇️ toggle
+  //   setIsActive();
 
-    // 👇️ or set to true
-    // setIsActive(true);
-  };
+  //   // 👇️ or set to true
+  //   // setIsActive(true);
+  // };
  
 
   return (
@@ -73,9 +73,10 @@ const PerformanceManagement = () => {
           width:'100%'
 
         }}>
-        <Box onClick={onClick}
+        <Box onClick={() => {
+        setIsActive(1)}}
         sx={{
-        backgroundColor: isActive ?"blue" : "white",
+        backgroundColor: isActive ==1 ?"blue" : "white",
         borderColor: '#FF3D00',
         borderWidth: 5,
         height:"38px",
@@ -94,9 +95,10 @@ sx={{
   Metrics/KPI
 </Typography>
         </Box>
-        <Box onClick={onClick}
+        <Box onClick={() => {
+        setIsActive(2)}}
         sx={{
-          backgroundColor: isActive ?"blue" : "white",
+          backgroundColor: isActive === 2 ?"blue" : "white",
           borderColor: '#FF3D00',
         borderWidth: 5,
         height:"38px",
@@ -118,7 +120,7 @@ Evaluation Matrix
         </Box>
         <Box
         sx={{
-          backgroundColor: isActive ?"blue" : "white",
+          backgroundColor: isActive==3 ?"blue" : "white",
           borderColor: '#FF3D00',
         borderWidth: 5,
         height:"38px",
@@ -139,9 +141,11 @@ sx={{
  Incentive for Good Performance
 </Typography>
         </Box>
-        <Box onClick={onClick}
+        <Box onClick={() => {
+        setIsActive(3)
+        }}
         sx={{
-          backgroundColor: isActive ?"blue" : "white",
+          backgroundColor: isActive === 3 ?"blue" : "white",
           borderColor: '#FF3D00',
         borderWidth: 5,
         height:"38px",
@@ -149,9 +153,9 @@ sx={{
           borderRadius: "25px",
           alignItems: "center",
                   }}>
-<Typography onClick={onClick}
+<Typography 
 sx={{
-  color: isActive ?"white" : "blue",
+  color: isActive ===4?"white" : "blue",
   fontWeight: "bold",
   paddingLeft:"50px",
   paddingTop:"6px"
@@ -161,7 +165,7 @@ Security Failure
         </Box>
         </Box>
 
-  <Box onClick={onClick}
+  <Box 
   sx={{
     paddingTop: "100px"
   }}>   
