@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-const TenderTypes = (prop) => {
+const TenderTypes = () => {
   const [isActive, setIsActive] = useState({id:"",check:false});
     
   function onClick (e: any){

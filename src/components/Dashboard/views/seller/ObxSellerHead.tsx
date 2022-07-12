@@ -1,41 +1,73 @@
-import React, { useState } from "react";
-import { Box } from "@mui/system";
-import { Button, IconButton, TextField, Typography } from "@mui/material";
-import InputLabel from '@mui/material/InputLabel';
+import { Box, Button, Icon, Grid, Typography,TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Title from "../../ults/Title";
+import AddIcon from "@mui/icons-material/Add";
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import DeleteIcon from "@mui/icons-material/Delete";
+import { flexBetween, flexCenter, StyledTextField } from "../../../../styles/styles";
+import EditIcon from "@mui/icons-material/Edit";
+import FormControl from '@mui/material/FormControl';
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 const ObxSellerHead = () => {
+  // const [view, setView] = useState("main");
+  // const [currentBuilding, setCurrentBuilding] = useState({
+  //   MCSTNumber: "2031",
+  //   UENNumber: "54578HSSD8",
+  //   date: "2022-05-18",
+  //   devName: "The Anchorage & Anchorpoint",
+  //   devLocation: "3832 Singapore",
+  //   MCAddress: "3832 dshfdihf jdfhksdhf",
+  //   phone: "659837249",
+  //   nameOfAgent: "Savills Property Management Pte Ltd",
+  //   contactOfAgent: "659837249",
+  // });
 
-  const [age, setAge] = React.useState('');
+  // const [color, setColor] = useState("");
+  // useEffect(() => {
+  //   let color = localStorage.getItem("color");
+  //   if (color) {
+  //     setColor(color);
+  //   }
+  // }, []);
+
+  const [view, setView] = useState("main");
+  const [supplyHead, setSupplyHead] = React.useState('');
+  const [category, setCategory] = React.useState('');
 
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setSupplyHead(event.target.value as string);
   };
-  return(
-    <Box sx={{ 
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
 
-    }}>
-    <Box
-    sx={{
-      display: "flex",
-      justifyContent: "space-between",
-      borderBottom: "1px solid",
-      width: "100%",
-    }}>
-      <Typography sx={{
-         fontSize: "40px",
-         fontWeight: "bold"
-       }}>
-        Supplier Directory
+  const handleCategory = (event: SelectChangeEvent) => {
+    setCategory(event.target.value as string);
+  };
 
-      </Typography>
-    </Box>
-    <Box
+  return (
+    <>
+      {view === "main" ? (
+        <Box>
+          <Box>
+            <Title title={"Supplier Directory"}>
+              <Box>
+                <Icon
+                  onClick={() => setView("add")}
+                  sx={{
+                    background: "#3b82f6",
+                    width: "30px",
+                    height: "30px",
+                    marginRight: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <AddIcon sx={{ color: "white" }} />
+                </Icon>
+                
+              </Box>
+            </Title>
+          </Box>
+          <Box
     sx={{
       backgroundColor: "#a7e8fc",
       width:"100%",
@@ -99,11 +131,9 @@ width:"32%"
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    value={age}
+    value={supplyHead}
     onChange={handleChange}
-  ><MenuItem value="">
-  <em>All</em>
-  </MenuItem>
+  >
     <MenuItem value={10}>Manned Guarding</MenuItem>
     <MenuItem value={20}>Surveillance systems</MenuItem>
     <MenuItem value={40}>Access control</MenuItem>
@@ -138,8 +168,8 @@ width:"32%"
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
-    value={age}
-    // onChange={handleChange}
+    value={category}
+    onChange={handleCategory}
   >
     <MenuItem value={10}>Manned Guarding</MenuItem>
     <MenuItem value={20}>Surveillance systems</MenuItem>
@@ -180,8 +210,84 @@ width:"32%"
             <Typography variant="subtitle2">Search</Typography>
           </Button>
           </Box>
-    
-    </Box>
-  )
+        </Box>
+      ) : view === "add" ? (
+        <>
+          <Box>
+            <Title title={"Create Supply Head"}>
+              <Button onClick={() => setView("main")}>
+                <KeyboardBackspaceIcon /> <Typography>Back</Typography>
+              </Button>
+            </Title>
+          </Box>
+          <Box
+            sx={{
+              padding: "30px 36px",
+            }}
+          >
+            <Grid container spacing={5}>
+              <Grid item xs={12} md={6}>
+                <StyledTextField
+                  size="small"
+                  id="S/N"
+                  label="S/N"
+                  type="text"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <StyledTextField
+                  size="small"
+                  id="Supply Head"
+                  label="Supply Head"
+                  type="text"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <StyledTextField
+                  size="small"
+                  id="Date Acquired"
+                  label="Date Acquired"
+                  type="date"
+                  variant="outlined"
+                  InputLabelProps={{ shrink: true }}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <StyledTextField
+                  size="small"
+                  id="Date of Expiry"
+                  label="Date of Expiry"
+                  type="date"
+                  variant="outlined"
+                  InputLabelProps={{ shrink: true }}
+                />
+              </Grid>
+            
+            </Grid>
+            <Box
+              sx={{
+                margin: "50px auto 0 auto",
+                textAlign: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  padding: "8px 30px",
+                }}
+              >
+                <Typography>Create</Typography>
+              </Button>
+            </Box>
+          </Box>
+        </>
+      
+      
+      ) : null}
+    </>
+  );
 };
+
 export default ObxSellerHead;
